@@ -26,6 +26,8 @@ export interface TextFieldProps
   errorText?: string
   leadingIcon?: React.ReactNode
   trailingIcon?: React.ReactNode
+  multiline?: boolean
+  rows?: number
 }
 
 const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
@@ -39,12 +41,15 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
       errorText,
       leadingIcon,
       trailingIcon,
+      multiline,
+      rows,
       ...props
     },
     ref
   ) => {
     const inputId = React.useId()
     const supportId = React.useId()
+    const InputComp = multiline ? 'textarea' : 'input'
 
     return (
       <div className={cn(textFieldVariants({ variant }), className)}>
@@ -64,18 +69,20 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
             </span>
           )}
           <div className="relative flex-1 min-w-0">
-            <input
-              ref={ref}
+            <InputComp
+              ref={ref as any}
               id={inputId}
               aria-describedby={supportingText || errorText ? supportId : undefined}
               aria-invalid={error}
+              {...(multiline ? { rows } : {})}
               className={cn(
-                'peer w-full bg-transparent outline-none text-m3-on-surface text-base h-14 px-4 pt-4 pb-1 placeholder-transparent',
+                'peer w-full bg-transparent outline-none text-m3-on-surface text-base px-4 pt-4 pb-1 placeholder-transparent',
+                multiline ? 'min-h-14 resize-y' : 'h-14',
                 leadingIcon && 'pl-2',
                 trailingIcon && 'pr-2'
               )}
               placeholder={label}
-              {...props}
+              {...(props as any)}
             />
             {label && (
               <label

@@ -18,6 +18,8 @@ const buttonVariants = cva(
           'bg-m3-surface-container-low text-m3-primary shadow-m3-1 hover:shadow-m3-2 active:shadow-m3-1 rounded-m3-full',
         tonal:
           'bg-m3-secondary-container text-m3-on-secondary-container hover:shadow-m3-1 active:shadow-none rounded-m3-full',
+        ghost:
+          'text-m3-on-surface-variant hover:bg-m3-on-surface/8 active:bg-m3-on-surface/12 rounded-m3-full',
       },
       size: {
         sm: 'h-8 px-3 text-xs',
