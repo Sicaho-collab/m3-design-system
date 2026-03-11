@@ -131,3 +131,22 @@ export type { TopAppBarProps } from './components/top-app-bar'
 
 // Hooks
 export { useClickOutside } from './lib/use-click-outside'
+
+// --- Custom / Alumable components (converted to M3 tokens) ---
+
+export { Button as ButtonAlt } from './components/button-1'
+export type { ButtonProps as ButtonAltProps } from './components/button-1'
+
+export { Calendar } from './components/calendar'
+export type { RangeValue } from './components/calendar'
+
+export { Error } from './components/error'
+
+export { Input } from './components/input'
+
+export { Material } from './components/material-1'
+
+export { Select } from './components/select-1'
+export type { Option as SelectOption } from './components/select-1'
+
+export { Spinner } from './components/spinner-1'
